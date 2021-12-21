@@ -10,6 +10,9 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      - run: npm install
+      - run: npm install --prefix web
+      - run: cd web && npm run build && npm run generate
       - uses: actions/checkout@v2
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -17,3 +20,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NUXT_DASHBOARD_7C6C8 }}'
           channelId: live
           projectId: nuxt-dashboard-7c6c8
+      
