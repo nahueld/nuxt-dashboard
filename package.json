@@ -7,7 +7,13 @@
   "devDependencies": {
     "@capacitor/cli": "^3.3.3",
     "@capacitor/core": "^3.3.3",
-    "@capacitor/ios": "^3.3.3"
+    "@capacitor/ios": "^3.3.3",
+    "@babel/eslint-parser": "^7.14.7",
+    "@nuxtjs/eslint-config": "^6.0.1",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "eslint": "^7.29.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-vue": "^7.12.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
