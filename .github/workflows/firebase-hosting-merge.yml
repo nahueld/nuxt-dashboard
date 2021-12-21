@@ -10,6 +10,8 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      - run: ls -lrtah
+      - run: ls ../ -lrtah
       - run: npm install
       - run: npm install --prefix web
       - run: cd web && npm run build && npm run generate
