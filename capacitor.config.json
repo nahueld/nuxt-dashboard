@@ -1,0 +1,6 @@
+{
+  "appId": "com.devar.nuxt.dashboard",
+  "appName": "nuxt-dashboard",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">nuxt-dashboard</string>
+    <string name="title_activity_main">nuxt-dashboard</string>
+    <string name="package_name">com.devar.nuxt.dashboard</string>
+    <string name="custom_url_scheme">com.devar.nuxt.dashboard</string>
+</resources>
