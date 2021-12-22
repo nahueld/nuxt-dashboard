@@ -16,7 +16,7 @@
     "eslint-plugin-vue": "^7.12.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "firebase emulators:start & npm run dev --prefix web"
   },
   "author": "",
   "license": "ISC"

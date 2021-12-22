@@ -1,9 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, connectAuthEmulator } from 'firebase/auth'
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore'
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyCwZKubkjIhYpY5LwcVmQSmoYnfkutDg2k',
   authDomain: 'nuxt-dashboard-7c6c8.firebaseapp.com',
@@ -15,7 +13,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
+const db = getFirestore()
+const auth = getAuth()
 
-export default function (context, inject) {
+export default function ({ isDev }, inject) {
+  if (isDev) {
+    connectFirestoreEmulator(db, 'localhost', 8080)
+    connectAuthEmulator(auth, 'http://localhost:9099')
+  }
+
+  inject('user', () => null)
   inject('app', () => app)
+  inject('auth', () => auth)
+  inject('db', () => db)
 }
