@@ -13,6 +13,7 @@
         @toggle-notifications-menu="toggleNotificationsMenu"
         @toggle-profile-menu="toggleProfileMenu"
         @toggle-side-menu="toggleSideMenu"
+        @log-out="logOut"
       />
       <Nuxt />
     </div>
@@ -20,21 +21,31 @@
 </template>
 
 <script>
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+
 export default {
   data () {
     return {
       isProfileMenuOpen: false,
       isNotificationsMenuOpen: false,
       isSideMenuOpen: false,
-      dark: false
+      dark: false,
+      user: null
     }
+  },
+  created () {
+    onAuthStateChanged(this.$auth(), (user) => {
+      this.user = user
+      if (!this.user) {
+        this.$router.push({ name: 'index' })
+      }
+    })
   },
   methods: {
     toggleTheme (dark) {
       this.dark = dark
     },
     toggleSideMenu (isSideMenuOpen) {
-      console.log('isSideMenuOpen', isSideMenuOpen)
       this.isSideMenuOpen = isSideMenuOpen
     },
     toggleProfileMenu (isProfileMenuOpen) {
@@ -42,6 +53,9 @@ export default {
     },
     toggleNotificationsMenu (isNotificationsMenuOpen) {
       this.isNotificationsMenuOpen = isNotificationsMenuOpen
+    },
+    async logOut () {
+      await signOut(this.$auth())
     }
   }
 }

@@ -9,11 +9,8 @@ export default {
 
   methods: {
     async accountCreation ({ email, password }) {
-      console.log(email, password)
-
       try {
-        const userCredential = await createUserWithEmailAndPassword(this.$auth(), email, password)
-        console.log(userCredential)
+        await createUserWithEmailAndPassword(this.$auth(), email, password)
       } catch (err) {
         console.error(err.toString())
       }
