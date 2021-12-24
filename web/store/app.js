@@ -15,35 +15,17 @@ export const mutations = {
 export const actions = {
 
   async signIn ({ commit }, { email, password }) {
-    try {
-      await this.$auth.signIn(email, password)
-    } catch (err) {
-      commit('authenticate', false)
-      return
-    }
-
+    await this.$auth.signIn(email, password)
     commit('authenticate', true)
   },
 
   async createAccount ({ commit }, { email, password }) {
-    try {
-      await this.$auth.createUserWithEmailAndPassword(email, password)
-    } catch (err) {
-      commit('authenticate', false)
-      return
-    }
-
+    await this.$auth.createAccount(email, password)
     commit('authenticate', true)
   },
 
   async signOut ({ commit }) {
-    try {
-      await this.$auth.signOut()
-    } catch (err) {
-      commit('authenticate', true)
-      return
-    }
-
+    await this.$auth.signOut()
     commit('authenticate', false)
   }
 }

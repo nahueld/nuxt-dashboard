@@ -28,6 +28,14 @@ export default {
     }
   },
   beforeCreate () {
+    // eslint-disable-next-line nuxt/no-globals-in-created
+    window.addEventListener('unhandledrejection', async (event) => {
+      await this.$Toast.show({
+        text: event.reason.toString(),
+        position: 'top'
+      })
+    })
+
     this.$auth.onAuthStateChanged((user) => {
       const isAuthenticated = !!user
 
