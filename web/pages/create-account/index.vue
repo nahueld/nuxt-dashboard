@@ -8,7 +8,7 @@ export default {
 
   methods: {
     accountCreation ({ email, password }) {
-      this.$auth.createAccount(email, password)
+      this.$store.dispatch('app/createAccount', { email, password })
     }
   }
 }

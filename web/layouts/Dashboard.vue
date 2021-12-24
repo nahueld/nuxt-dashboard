@@ -23,6 +23,7 @@
 <script>
 
 export default {
+  middleware: ['authenticated'],
   data () {
     return {
       isProfileMenuOpen: false,
@@ -34,10 +35,12 @@ export default {
   },
   created () {
     this.$auth.onAuthStateChanged((user) => {
-      this.user = user
-      if (!this.user) {
-        this.$router.push({ name: 'index' })
+      if (user) {
+        this.$store.commit('app/authenticate', true)
+        return
       }
+
+      this.$store.commit('app/authenticate', false)
     })
   },
   methods: {
@@ -54,7 +57,7 @@ export default {
       this.isNotificationsMenuOpen = isNotificationsMenuOpen
     },
     async logOut () {
-      await this.$auth.signOut()
+      await this.$store.dispatch('app/signOut')
     }
   }
 }

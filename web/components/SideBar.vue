@@ -571,7 +571,6 @@ export default {
   },
   methods: {
     closeSideMenu () {
-      console.log('closeSideMenu', this.isSideMenuOpen)
       this.$emit('toggle-side-menu', false)
     }
   }
