@@ -1,10 +1,14 @@
 export const state = () => ({
+  isLoading: true,
   isAuthenticated: false
 })
 
 export const mutations = {
   authenticate (state, authState) {
     state.isAuthenticated = authState
+  },
+  loading (state, loadingState) {
+    state.isLoading = loadingState
   }
 }
 

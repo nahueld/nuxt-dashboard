@@ -15,7 +15,7 @@
         @toggle-side-menu="toggleSideMenu"
         @log-out="logOut"
       />
-      <Nuxt />
+      <slot />
     </div>
   </div>
 </template>
@@ -23,7 +23,6 @@
 <script>
 
 export default {
-  middleware: ['authenticated'],
   data () {
     return {
       isProfileMenuOpen: false,
@@ -32,16 +31,6 @@ export default {
       dark: false,
       user: null
     }
-  },
-  created () {
-    this.$auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.$store.commit('app/authenticate', true)
-        return
-      }
-
-      this.$store.commit('app/authenticate', false)
-    })
   },
   methods: {
     toggleTheme (dark) {
