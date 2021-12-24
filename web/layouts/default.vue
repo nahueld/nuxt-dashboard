@@ -15,6 +15,7 @@
     </div>
   </div>
 </template>
+
 <script>
 
 export default {
@@ -26,11 +27,24 @@ export default {
       return this.$store.state.app.isAuthenticated
     }
   },
-  created () {
+  beforeCreate () {
     this.$auth.onAuthStateChanged((user) => {
       const isAuthenticated = !!user
 
       this.$store.commit('app/authenticate', isAuthenticated)
+
+      const publicRoutes = ['index', 'create-account', 'forgot-password']
+      const isPrivateRoute = route => !publicRoutes.includes(route)
+      const isPublicRoute = route => publicRoutes.includes(route)
+
+      if (isAuthenticated && isPublicRoute(this.$route.name)) {
+        this.$router.push({ name: 'dashboard' })
+      }
+
+      if (!isAuthenticated && isPrivateRoute(this.$route.name)) {
+        this.$router.push({ name: 'index' })
+      }
+
       this.$store.commit('app/loading', false)
     })
   }
