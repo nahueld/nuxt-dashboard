@@ -2,7 +2,6 @@
   <Nuxt />
 </template>
 <script>
-import { onAuthStateChanged } from 'firebase/auth'
 
 export default {
   data () {
@@ -11,7 +10,7 @@ export default {
     }
   },
   created () {
-    onAuthStateChanged(this.$auth(), (user) => {
+    this.$auth.onAuthStateChanged((user) => {
       this.user = user
       if (this.user) {
         this.$router.push({ name: 'dashboard' })
