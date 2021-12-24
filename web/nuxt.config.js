@@ -63,5 +63,17 @@ export default {
 
   generate: {
     dir: '../dist'
+  },
+
+  publicRuntimeConfig: {
+    firebase: {
+      apiKey: 'AIzaSyCwZKubkjIhYpY5LwcVmQSmoYnfkutDg2k',
+      authDomain: 'nuxt-dashboard-7c6c8.firebaseapp.com',
+      projectId: 'nuxt-dashboard-7c6c8',
+      storageBucket: 'nuxt-dashboard-7c6c8.appspot.com',
+      messagingSenderId: '286362493875',
+      appId: '1:286362493875:web:f6051b99585d2b9e7121c6'
+    }
   }
+
 }
