@@ -25,29 +25,13 @@
             >
               Login
             </h1>
-            <label class="block text-sm">
-              <span class="text-gray-700 dark:text-gray-400">Email</span>
-              <input
-                v-model="email"
-                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-              >
-            </label>
-            <label class="block mt-4 text-sm">
-              <span class="text-gray-700 dark:text-gray-400">Password</span>
-              <input
-                v-model="password"
-                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                type="password"
-              >
-            </label>
 
-            <!-- You should use a button here, as the anchor is only used for the example  -->
-            <a
-              class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-              @click="logIn"
-            >
-              Log in
-            </a>
+            <Input v-model="email" type="email" label="Email" />
+            <Input v-model="password" type="password" label="Password" />
+
+            <Button :is-loading="isLoading" @click="logIn">
+              Log-in
+            </Button>
 
             <hr class="my-8">
 
@@ -107,6 +91,12 @@
 
 <script>
 export default {
+  props: {
+    isLoading: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       email: '',

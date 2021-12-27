@@ -75,6 +75,17 @@ export default {
       messagingSenderId: '286362493875',
       appId: '1:286362493875:web:f6051b99585d2b9e7121c6'
     }
+  },
+
+  tailwindcss: {
+    config: {
+      variants: {
+        extend: {
+          opacity: ['disabled'],
+          backgroundColor: ['disabled']
+        }
+      }
+    }
   }
 
 }
