@@ -1,5 +1,22 @@
 <template>
-  <label class="block mt-4 text-sm">
+  <!-- CHECKBOX -->
+  <div v-if="type === 'checkbox'" class="flex mt-6 text-sm">
+    <label class="flex items-center dark:text-gray-400">
+      <input
+        v-model="inputVal"
+        type="checkbox"
+        class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+      >
+      <span class="ml-2">
+        <slot />
+        <!-- I agree to the
+        <span class="underline">privacy policy</span> -->
+      </span>
+    </label>
+  </div>
+
+  <!-- OTHERS -->
+  <label v-else class="block mt-4 text-sm">
     <span class="text-gray-700 dark:text-gray-400">{{ label }}</span>
     <input
       v-model="inputVal"
