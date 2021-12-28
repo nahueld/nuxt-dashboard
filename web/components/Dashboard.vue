@@ -29,7 +29,7 @@ export default {
       isNotificationsMenuOpen: false,
       isSideMenuOpen: false,
       dark: false,
-      user: null
+      user: this.$store.state.app.user
     }
   },
   methods: {

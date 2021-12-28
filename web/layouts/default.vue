@@ -54,6 +54,7 @@ export default {
       }
 
       this.$store.commit('app/loading', false)
+      this.$store.commit('app/setUser', user && JSON.parse(JSON.stringify(user)))
     })
   }
 }

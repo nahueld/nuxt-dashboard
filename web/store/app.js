@@ -1,6 +1,7 @@
 export const state = () => ({
   isLoading: true,
-  isAuthenticated: false
+  isAuthenticated: false,
+  user: {}
 })
 
 export const mutations = {
@@ -9,6 +10,9 @@ export const mutations = {
   },
   loading (state, loadingState) {
     state.isLoading = loadingState
+  },
+  setUser (state, user) {
+    state.user = user || {}
   }
 }
 
